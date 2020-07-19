@@ -58,7 +58,15 @@ struct Static_Widget: Widget {
         StaticConfiguration(kind: kind, provider: Provider(), placeholder: PlaceholderView()) { entry in
             WidgetView(data: .previewData)
         }
+        .supportedFamilies([.systemSmall, .systemMedium])
         .configurationDisplayName("Weight Display")
         .description("Your weight will be shown, as added in the app.")
+        
+    }
+}
+
+struct Static_Widget_Previews: PreviewProvider {
+    static var previews: some View {
+        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
     }
 }
