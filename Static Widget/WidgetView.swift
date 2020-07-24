@@ -62,7 +62,7 @@ struct WeightView: View {
                     .foregroundColor(.purple)
                     .bold()
                 Spacer()
-                Text(MeasurementFormatter().string(from: data.weight))
+                Text(measurementFormatter.string(from: data.weight))
                     .font(.title)
                     .foregroundColor(.purple)
                     .bold()
@@ -75,6 +75,14 @@ struct WeightView: View {
     }
 }
 
+extension WeightView{
+    var measurementFormatter : MeasurementFormatter {
+        let mf = MeasurementFormatter()
+        mf.locale = Locale(identifier: "en_GB")
+        return mf
+    }
+}
+
 struct LastUpdatedView: View {
     let data: WidgetData
     var body: some View {
@@ -83,11 +91,11 @@ struct LastUpdatedView: View {
                 .font(.body)
                 .bold()
                 .foregroundColor(.purple)
-            Text("\(data.date, style: .relative) ago")
+            Text("\(data.date, style: .relative)")
                 .font(.caption)
                 .foregroundColor(.purple)
                 .minimumScaleFactor(0.7)
-                
+                .redacted(reason: .placeholder)
         }
     }
 }
